@@ -1,0 +1,37 @@
+<app-header></app-header>
+<br><br>
+<div class="center">
+  <h2 class="heading mt-1">{{ type }} AuditType</h2>
+  
+  <div class="container qdiv table-responsive" *ngIf="question.length > 0">
+    <table class="box2 table">
+      <!--We can use "box2" and add rows by using a default format "<tr>", last one will be different, so last one will have to be assigned separately-->
+      <tr class="firstrow">
+        <th class="leftside topside tt" scope="col">Question</th>
+        <th class="rightside topside tt" scope="col">Choices</th>
+        <th class="rightside topside tt" scope="col">Response</th>
+      </tr>
+      <tr *ngFor="let question of question; let i = index">
+        <td class="leftside" name="question">{{ question.question }}</td>
+        <td class="rightend" name="response_table_data">
+          <input type="button" value="Yes" class="btn buttn mx-4 px-4 my-1 response-btn" (click)="responseYes(i)" />
+          <input type="button" value="No" class="btn buttn mx-4 px-4 my-1 response-btn" (click)="responseNo(i)" />
+        </td>
+        <td class="rightside" name="auditType">{{ question.response }}</td>
+      </tr>
+    </table>
+    <div class="qdivbtn">
+      <div class="alert alert-danger mx-auto error-message" role="alert" *ngIf="message.length>0">
+        {{ message }}
+      </div>
+      <div class="button">
+        <button type="submit" class="btn buttn lastbtn" (click)="getResults()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- <input type="button" value="Get Result" (click)="getResults()" /> -->
+</div>
+
+

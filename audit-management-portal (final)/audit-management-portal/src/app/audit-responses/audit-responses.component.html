@@ -1,0 +1,44 @@
+<app-header></app-header>
+<br><br><br>
+<div class="center">
+  <h2>
+    <p>
+      Audit Data
+    </p>
+  </h2>
+  <ng-template [ngIf]="responses.length==0" [ngIfElse]="displayTable">
+    <div class="container component my-5">
+      <h3 class="heading pt-5">
+        No Data Available
+      </h3>
+      <br>
+      <div class="button">
+        <input class="btn buttn bigbtn lastbtn" type="button" value="Back to Home" routerLink="/home">
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #displayTable>
+    <div class="container mx-auto table-responsive">
+      <table class="table">
+        <tr>
+          <td class="tt">Audit Id</td>
+          <td class="tt">Project Name</td>
+          <td class="tt">Manager Name</td>
+          <td class="tt">Project Execution Status</td>
+          <td class="tt">Remedial Action Duration</td>
+        </tr>
+        <tr *ngFor="let res of responses">
+          <td>{{res.auditId}}</td>
+          <td>{{res.projectName}}</td>
+          <td>{{res.managerName}}</td>
+          <td attr.class={{res.projectExecutionStatus.toLowerCase()}}>{{res.projectExecutionStatus}}</td>
+          <td>{{res.remedialActionDuration}}</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class="button">
+      <input class="btn buttn bigbtn lastbtn" type="button" value="Back to Home" routerLink="/home">
+    </div>
+  </ng-template>
+</div>

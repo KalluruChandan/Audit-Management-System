@@ -1,0 +1,28 @@
+<app-header></app-header>
+<br><br>
+<div class="center">
+  <h2>
+    <p>
+      Audit Result
+    </p>
+  </h2>
+  <div class="container mx-auto table-responsive">
+    <table class="table">
+      <tr>
+        <td class="tt">Audit Id</td>
+        <td class="tt">Project Name</td>
+        <td class="tt">Manager Name</td>
+        <td class="tt">Project Execution Status</td>
+        <td class="tt">Remedial Action Duration</td>
+      </tr>
+      <tr>
+        <td>{{result.auditId}}</td>
+        <td>{{result.projectName}}</td>
+        <td>{{result.managerName}}</td>
+        <td attr.class={{result.projectExecutionStatus.toLowerCase()}}>{{result.projectExecutionStatus}}</td>
+        <td>{{result.remedialActionDuration}}</td>
+      </tr>
+    </table>
+  </div>
+  <input class="btn button bigbtn" type="button" value="Back to Survey" (click)="goBackToChecklist()">
+</div>

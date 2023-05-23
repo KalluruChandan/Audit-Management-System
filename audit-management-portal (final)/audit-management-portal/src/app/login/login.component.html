@@ -1,0 +1,62 @@
+<app-logout></app-logout>
+<!--  
+<div id="login" class="container">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="login well well-small">
+        <div class="center">
+          <img src="" alt="logo"> 
+        </div>
+        <form action="/users/login"  class="login-form" id="UserLoginForm" method="post" accept-charset="utf-8">
+          <div class="control-group">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-user"></i></span>
+              <input name="data[User][username]" required="required" placeholder="Username" maxlength="255" type="text" id="UserUsername"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-lock"></i></span>
+              <input name="data[User][password]" required="required" placeholder="Password" type="password" id="UserPassword"> 
+            </div>
+          </div>
+          <div class="control-group">
+            <label id="remember-me">
+              <input type="checkbox" name="data[User][remember_me]" value="1" id="UserRememberMe"> Remember Me?</label>
+          </div>
+          <div class="control-group">
+            <input class="btn btn-primary btn-large btn-block" type="submit" value="Sign in"> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div id="login">
+  <form  [formGroup]="loginForm" class="login-form"  novalidate>
+    <h3 class="login-heading">Login</h3>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text"  formControlName="username" [(ngModel)]="username" class="form-control" placeholder="Enter username">
+      <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.controls['username'].errors">
+          username is required  & minlength=3
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+      <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.controls['password'].errors">
+          password is required & minlength=3
+        </div>
+    </div>
+    </div>
+    <div class="alert alert-danger error-message" role="alert" *ngIf="message.length>0">
+      {{ message }}
+    </div>
+    <button type="submit" [disabled]="loginForm.pristine || loginForm.invalid" name="" class="btn button login-button" value="Login" (click)="onLogIn()">Login</button>
+  </form>
+</div>
